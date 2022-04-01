@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-session": "^1.17.2",
+    "mongoo": "^0.3.5",
+    "mongood": "^0.0.5",
+    "mongoose": "^6.2.9",
+    "multer": "^1.4.4"
+  },
+  "name": "intecoweb",
+  "version": "1.0.0",
+  "description": "incio de aplicacion inteco para lanzarla. Diseño y arquitectura principal",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ES"
+  },
+  "keywords": [
+    "ES"
+  ],
+  "author": "INTECO",
+  "license": "ISC"
+
+}

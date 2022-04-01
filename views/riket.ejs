@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+    <meta name="description" content="Demostrar capacidades de plugin de
+            impresión para impresora térmica en JavaScript">
+    <meta name="author" content="Parzibyte">
+    <title>Imprimir códigos QR en impresora térmica</title>
+    <!-- Cargar el CSS de Boostrap-->
+    <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+</head>
+<body>
+<main role="main" class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1>Códigos QR en thermal printer</h1>
+            <p>En este ejemplo se muestra cómo imprimir un código QR en una ticketera</p>
+            <a href="//parzibyte.me/blog">By Parzibyte</a>
+            <br>
+            <a class="mb-2 btn btn-danger btn-sm"
+               href="../../index.html">Documentación</a>
+            <div class="alert alert-danger">Recuerda que el plugin debe estar ejecutándose en segundo plano</div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="form-group">
+                <label for="listaDeImpresoras">Selecciona tu impresora</label>
+                <select class="form-control" id="listaDeImpresoras"></select>
+            </div>
+            <div class="form-group">
+                <label for="codigo">Contenido del código QR</label>
+                <textarea placeholder="Escribe el contenido del código QR" id="codigo" cols="30"
+                          rows="5" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="btnImprimir">Imprimir
+                    en impresora seleccionada
+                </button>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2>Log</h2>
+            <button class="btn btn-warning btn-sm" id="btnLimpiarLog">Limpiar
+                log
+            </button>
+            <pre id="estado"></pre>
+        </div>
+    </div>
+</main>
+<script src="/servicios/Impresora.js"></script>
+<script src="/servicios/script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%- include ("templates/encabezado")%>
+<%- include ("templates/menuADM")%>
+
+	<style>
+*{box-sizing:border-box;}
+form{
+	width:350px;
+	padding:16px;
+	border-radius:20px;
+	margin:auto;
+  background-color: rgb(247, 74, 52);
+}
+.cajatex{
+
+	width:200px;
+
+	display:inline-block;
+}
+
+form label{
+	width:87px;
+	font-weight:bold;
+	display:inline-block;
+}
+form input[type="text"],
+form input[type="email"]{
+	width:210px;
+	padding:5px 5px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;
+}
+/* //----------------------//  */
+.file-select {
+  position: relative;
+  display: inline-block;
+}
+
+.file-select::before {
+  background-color:rgb(255, 179, 80) ;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  content: 'Seleccionar'; /* testo por defecto */
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.file-select input[type="file"] {
+  opacity: 0;
+  width: 320px;
+  height: 32px;
+  display: inline-block;
+}
+
+#src-file1::before {
+  content: 'Seleccionar Foto';
+}
+form input[type="submit"]{
+	width:100%;
+	padding:8px 20px;
+	margin-top:32px;
+	border:1px solid #000;
+	border-radius:10px;
+	display:block;
+	color:#fff;
+	background-color:#000;
+} 
+
+form input[type="submit"]:hover{
+	cursor:pointer;
+}
+
+textarea{
+	width:100%;
+	height:100px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;			
+	margin:8px 0;
+	/*resize: vertical | horizontal | none | both*/
+	resize:none;
+	display:block;
+}
+	</style>
+
+</head>
+<body style="background-color: rgba(165, 156, 130, 0.904);">
+<div class="mt-5 ">
+  <form class="" action="/agregarP" target="" method="post" name="formDatosPersonales">
+
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombreP" id="nombreP" placeholder="Nombre del producto"required/>
+  
+    <label for="Descripcion">Descripcion</label>
+    <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion"required/>
+  
+    <label for="precio">Precio</label>
+    <input type="text" name="precio" id="precio" placeholder="Precio" required />
+  
+    <label for="asunto">Tipo</label>
+    <select class="form-select cajatex" name="tipo" id="tipo">
+      <option selected>Elige la Categoria</option> 
+
+      <option value="1">Alimento</option>
+      <option value="2">Bebida</option>
+      <option value="3">Especial</option>
+
+    </select>
+	<h1></h1>
+	    <div class="file-select center" id="src-file1" >
+			<input type="file" id="fotoProd"  name="fotoProd" aria-label="Archivo">
+		</div>
+		
+		<button class="btnesadm" type="submit">AGREGAR</button>
+		<a href="/adm"><button class="btnesadm" type="button ">CANCELAR</button></a>
+  </form>
+
+
+  
+</div>
+
+
+</body>
+</html>
+
+

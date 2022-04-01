@@ -1,0 +1,42 @@
+
+<%- include ("templates/encabezado")%>
+<%- include ("templates/menu")%>
+<!-- 
+<h1>HolaMundo</h1>
+<h1>Dayan</h1>-->
+
+<div class="col-9 row row-cols-1 row-cols-md-3 text-center mt-5" align="center">
+    <table class="table" border="1">
+        <thead align="center" class="table-active">
+        </thead>
+        <tbody>
+            <% producto.forEach((producto)=>{
+                %>
+            <tr class="align-middle">
+                <div class="">
+                    <div class="col-12">
+                        <div class="card mb-4 col-12 mx-2 rounded-3 shadow-sm fondoProd">
+
+                            <div class="card-body">
+                                <h4 class="precio" style="background-color: aliceblue;">$<%= producto.precio%></h4>
+                                <div class="contenedor">
+                                    <img src="<%= producto.foto%>" width="120" height="120">
+                                    <div class="centrado nombreP" ><h4><%= producto.nombre%></h4></div>
+                                </div>
+                                <div style="color: aliceblue;">
+                                    <h6><%= producto.descripcion%></h6>
+                                </div>
+                                
+                                
+                                </a>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </div>
+</div>
+<%- include ("templates/pie")%>

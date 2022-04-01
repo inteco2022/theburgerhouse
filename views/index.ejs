@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css2/bootstrap.min.css">
+    <script src="/js2/popper.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="/css2/sweetalert2.min.css">
+
+    <title>Comprar</title>
+    <!-- Favicon -->
+    <link href="/img/favicon.ico" rel="icon">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
+    
+    <!-- CSS Libraries -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/lib/flaticon/font/flaticon.css" rel="stylesheet">
+    <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body style="background-color: rgba(165, 156, 130, 0.904);">
+        <!-- Nav Bar Start -->
+        <div class="navbar navbar-expand-lg bg-light navbar-light">
+            <div class="container-fluid">
+                
+                 
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="/" class="nav-item nav-link active">Inicio</a>   
+                        <a href="/menu" class="nav-item nav-link">Menu</a>
+                        <a href="/cliente/comprar" class="nav-item nav-link">Comprar</a>
+                        <div class="collapse navbar-collapse" id="navbarCollapse">
+                
+                            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item  ">
+                                    <a href="#" id="dropdown01" class="nav-link dropdown-toggle custom-btn" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">Ver Carrito</h2></a>
+                                    <div id="carrito" class="dropdown-menu " style="background-color: rgb(247, 74, 52);" aria-labelledby="navbarCollapse">
+                                        <table id="lista-carrito" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Imagen</th>
+                                                    <th>Nombre</th>
+                                                    <th>Precio</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                
+                                        <a href="#" id="vaciar-carrito" class="btn  btn-block custom-btn">Vaciar Carrito</a>
+                                        <a href="#" id="procesar-pedido" class="btn  btn-block custom-btn">Procesar
+                                            Compra</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Acceso</a>
+                            <div class="dropdown-menu">
+                                <a href="/cliente/portal" class="dropdown-item">Portal del Cliente</a>
+                                <a href="/theburgerhouse/portal" class="dropdown-item">Portal Hamburgesa</a>
+                            </div>
+                        </div>
+                        <a href="/#contacto" class="nav-item nav-link">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+
+        
+    <main>
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 my-4 mx-auto text-center">
+            <h1 class="display-4 mt-4">¡Las mejores Hambugesas!</h1>
+            
+        </div>
+
+        <div class="container" id="lista-productos"> 
+            <div class="card-deck mb-3 text-center">
+                
+                
+                <% producto.forEach((producto)=>{
+                    %>
+
+                <div class="card mb-4 shadow-sm" style="background-color: rgb(247, 74, 52);">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-bold"><%= producto.nombre%></h4>
+                    </div>
+                    <div class="card-body">
+                        <img src="<%= producto.foto%>" class="card-img-top">
+                        <h1 class="card-title pricing-card-title precio">$ <span class=""><%= producto.precio%></span></h1>
+
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li></li>
+                            <li><%= producto.descripcion%></li>
+                        </ul>
+                        <a href="" class="btn btn-block custom-btn agregar-carrito" data-id="9">Comprar</a>
+                    </div>
+                </div>
+
+
+                <% }); %>
+
+
+            </div>
+
+
+        </div>
+    </main>
+
+    <script src="/js2/jquery-3.4.1.min.js"></script>
+    <script src="/js2/bootstrap.min.js"></script>
+    <script src="/js2/sweetalert2.min.js"></script>
+    <script src="/js2/carrito.js"></script>
+    <script src="/js2/pedido.js"></script>
+
+</body>
+
+</html>

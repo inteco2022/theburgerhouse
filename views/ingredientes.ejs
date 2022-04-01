@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The Burger House</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="/img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet"> 
+        
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="/lib/animate/animate.min.css" rel="stylesheet">
+        <link href="/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="/lib/flaticon/font/flaticon.css" rel="stylesheet">
+        <link href="/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+        <style>
+            .circuloActivo {
+                width: 20px;
+                height: 20px;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background: #5cb85c;
+            }
+            .circuloInactivo {
+                width: 20px;
+                height: 20px;
+                -moz-border-radius: 50%;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background: #ff0101;
+            }
+            </style>
+        <!-- Template Stylesheet -->
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+
+    <body style="   background: rgb(247, 74, 52);">
+ 
+        <body style="background-color: rgba(165, 156, 130, 0.904);">
+            
+                <!-- Nav Bar Start -->
+                <div class="navbar navbar-expand-lg bg-light navbar-light">
+                    <div class="container-fluid">
+                        <a href="/theburgerhouse/portal" class="navbar-brand">The Burger House</a>
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+        
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav ml-auto">
+                                <a href="/theburgerhouse/portal" class="nav-item nav-link">EMPLEADOS</a>
+                                <a href="/theburgerhouse/portal/productos" class="nav-item nav-link">PRODUCTOS</a>
+                                <a href="/theburgerhouse/portal/almacen" class="nav-item nav-link">ALMACEN</a>
+                                <a href="/theburgerhouse/portal/ventas" class="nav-item nav-link">VENTAS</a>
+                                <% 
+                                    usuario.forEach((usuario)=>{                
+                                %>
+                                    <a href="/miperfil/editar/<%= usuario.id%>" class="nav-item nav-link">Nombre del usuario</a>
+                                <%
+                                    });
+                                %>
+                                <img src="https://blog.hubspot.es/hubfs/media/descripcionproductoejemplobee.png" alt="" width="30" height="30">
+                            </div>
+                        </div>
+                    </div>
+        
+                    <a href="/theburgerhouse/ingrediente/agregar"><button type="submit" class="btn btn-warning btn-block">NuevoI</button></a>
+                </div>
+                <!-- Nav Bar fin -->
+        
+            <br><br>
+            <div class="tab-content mt-5" style="background: rgb(247, 74, 52);">
+              <div id="hamburgesa" class="container tab-pane active">
+                  <table class="table" style="background: rgb(255, 100, 80);">
+                      <thead>
+                        <tr>
+                          <th></th>
+                          <th scope="col">Foto</th>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Stock</th>
+                          <th scope="col">Opciones</th>
+                          <th scope="">Alta/Baja</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <% 
+                            ingredientes.forEach((ingrediente)=>{
+                        %>
+                    <tr>
+                        <th>
+                            <% 
+                                if(ingrediente.estado==true){   
+                            %>
+                            <div class="circuloActivo"></div>
+                            <%
+                                }else if(ingrediente.estado==false){
+                            %>
+                            <div class="circuloInactivo"></div>
+                            <%
+                                }
+                            %>
+                        </th>
+                        <th scope="row"><img src="<%= ingrediente.foto%>" width="50" height="50" alt=""></th>
+                        <td><%= ingrediente.nombre%></td>
+                        <td><%= ingrediente.cantidad%></td>
+                        <td>$ <%= ingrediente.precio%></td> 
+                        <td>
+                            <a href="editarinrediente/<%= ingrediente.id%>"><button class="button" type="button">Editar</button></a>
+                        </td>
+                        <td>
+                            <a href="/altaingrediente/<%= ingrediente.id%>">A</a>
+                            <a href="/bajaingrediente/<%= ingrediente.id%>">B</a>
+                        </td>
+                      </tr>
+
+                    <% 
+                        }); 
+                    %>
+                        
+                        
+                      </tbody>
+                    </table>
+              </div>
+              
+              
+          </div>
+                <!-- JavaScript Libraries -->
+                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+                <script src="lib/easing/easing.min.js"></script>
+                <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+                <script src="lib/tempusdominus/js/moment.min.js"></script>
+                <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+                <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+                
+                <!-- Contact Javascript File -->
+                <script src="mail/jqBootstrapValidation.min.js"></script>
+                <script src="mail/contact.js"></script>
+        
+                <!-- Template Javascript -->
+                <script src="js/main.js"></script>
+            </body>
+        </html>
+        
+<!-- Footer Start -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="footer-contact">
+                            <h2>Contacto</h2>
+                            <p><i class="fa fa-map-marker-alt"></i>N°16 Mandarina, San Juan del Rio Mexico</p>
+                            <p><i class="fa fa-phone-alt"></i>+52 1427 119 4878</p>
+                            <p><i class="fa fa-envelope"></i>theburgerhouse12@gmail.com</p>
+                            <!--<div class="footer-social">
+                                <a href=""><i class="fab fa-twitter"></i></a>
+                                <a href=""><i class="fab fa-facebook-f"></i></a>
+                                <a href=""><i class="fab fa-youtube"></i></a>
+                                <a href=""><i class="fab fa-instagram"></i></a>
+                                <a href=""><i class="fab fa-linkedin-in"></i></a>
+                            </div>-->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="footer-newsletter">
+                    <h2>Sugerencias</h2>
+                    <p>
+                        Tus palabras son la guia para mejorar. Gracias por tus comentarios
+                    </p>
+                    <div>
+                        <form action="/enviarComentario" method="POST">
+                            <input style="background-color: aliceblue;" class="form-control" placeholder="Escribenos tu comentario">
+                            <button type="submit" id="sus_submit" class="btn custom-btn">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <p>Copyright &copy; <a href="#">The Burger House</a>, Todos los derechos reservados.</p>
+            <p>Creado por <a href="https://wolfcorp.com">INTECO</a></p>
+        </div>
+    </div>
+</div>
+<!-- Footer End -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/tempusdominus/js/moment.min.js"></script>
+        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        
+        <!-- Contact Javascript File -->
+        <script src="mail/jqBootstrapValidation.min.js"></script>
+        <script src="mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+</html>

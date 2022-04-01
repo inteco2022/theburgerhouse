@@ -1,0 +1,81 @@
+<%- include ("templates/encabezado")%>
+<body style="background-color: rgba(165, 156, 130, 0.904);">
+    
+        <!-- Nav Bar Start -->
+        <div class="navbar navbar-expand-lg bg-light navbar-light">
+            <div class="container-fluid">
+                <a href="index.html" class="navbar-brand">The Burger House</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto">
+                        <a href="/usuario/adm" class="nav-item nav-link">Usuarios</a>
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Producto</a>
+                            <div class="dropdown-menu" style="background-color: rgba(165, 156, 130, 0.904);">
+                                <a href="/inventario" class="dropdown-item">Inventario</a>
+                                <a href="/ventasGA" class="dropdown-item">Ventas de Alimentos</a>
+                                <a href="/ventasAB" class="dropdown-item">Ventas de Bebidas</a>
+                            </div>
+                        </div>
+                        <a href="#" class="nav-item nav-link">Nombre del usuario</a>
+                        <img src="https://blog.hubspot.es/hubfs/media/descripcionproductoejemplobee.png" alt="" width="30" height="30">
+                    </div>
+                </div>
+            </div>
+
+            <a href="/nuevoUs"><button type="submit" class="btn btn-warning btn-block">NuevoU</button></a>
+        </div>
+        <!-- Nav Bar fin -->
+
+    <br><br>
+    <div class="tab-content mt-5" style="background: rgb(247, 74, 52);">
+      <div id="hamburgesa" class="container tab-pane active">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Descripcion</th>
+                  <th scope="col">Atiende</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">17121021</th>
+                  <td>Monster, Papas a la francesa</td>
+                  <td>Luis Angel</td>
+                  <td>$ 100</td>
+                </tr>
+                <tr>
+                  <th scope="row">17121021</th>
+                  <td>Monster, Con tocino- Con chipotle</td>
+                  <td>Luis Angel</td>
+                  <td>$ 180</td>
+                </tr>
+                
+              </tbody>
+            </table>
+      </div>
+      
+      
+  </div>
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+        <script src="lib/tempusdominus/js/moment.min.js"></script>
+        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+        
+        <!-- Contact Javascript File -->
+        <script src="mail/jqBootstrapValidation.min.js"></script>
+        <script src="mail/contact.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
+</html>
